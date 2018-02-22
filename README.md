@@ -1,7 +1,7 @@
 >在项目开发中，由于前后端通常要一起开工，作为前端的我们许多工作需要在后台返回的基础上进行，因此，大部分时间，编写完成的代码看不到实在的效果，这就导致在后台完成工作之前前端无法进行很好的调试。因此，项目的进度在一定程度上来说使前后台的串行工作，而不是并行。然而mock.js可以帮我们很好地解决这个问题。[Mockjs官网](http://mockjs.com/)
 
 #### mock使用教程
-#####数据模板定义
+##### 数据模板定义
 'name|rule': value name 为属性名, rule 为规则, value 为值，属性名和生成规则之间用|分隔，生成规则的格式有7种：
 - 'name|min-max': value
 - 'name|count': value
@@ -48,7 +48,7 @@
 - 占位符 也可以引用 数据模板 中的属性。
 - 占位符 会优先引用 数据模板 中的属性
 
-#####常用方法
+##### 常用方法
 1.Mock.mock( rurl?, rtype?, template|function(options) )根据数据模板生成模拟数据。
 - rurl：可选。表示需要拦截的 URL，可以是 URL 字符串或 URL 正则。例如 //domain/list.json/、'/domian/list.json'。
 - rtype：可选。表示需要拦截的 Ajax 请求类型。例如 GET、POST、PUT、DELETE 等。
