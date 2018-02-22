@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mockjs-demo</title>
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+    <script src="require.js"></script>
+    <script type="text/javascript">
+    require.config({
+        paths: {
+            "jquery": "node_modules/jquery/dist/jquery.min",
+            "mockjs": "node_modules/mockjs/dist/mock-min",
+        }
+    });
+    // 使用 Mock
+    require(['mockjs', 'jquery'], function(Mock, $) {　　　　
+        Mock.mock('http://123.com', {
+            // 'name': "MarcoHan",
+            name: {
+                first: '@FIRST', 
+                middle: '@FIRST',
+                last: '@LAST',
+                full: '@first @middle @last'
+            },
+            'age|1-100': 100,
+            'color': '@COLOR',  //@占位符实际引用的是Mock.Random里面的方法，具体查看API
+            // 'color': Mock.Random.color(),  
+            // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+            'list|1-10': [{
+                // 属性 id 是一个自增数，起始值为 1，每次增 1
+                'id|+1': 1
+            }]
+        });
+
+        // // 输出结果
+        // console.log(JSON.stringify(data, null, 4))
+
+        $.ajax({
+            url: 'http://123.com'
+        }).done(function(data, status, xhr) {
+            console.dir(data);
+        })
+    });
+    </script>
+</body>
+
+</html>
